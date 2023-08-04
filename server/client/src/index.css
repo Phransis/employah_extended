@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
+
+html,
+body,
+#root,
+.app,
+.content {
+  height: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.error-component {
+  position: fixed;
+  bottom: 1%;
+  right: 1%;
+}
+
+.bg-img {
+  background-image: url("/src/assets/landing.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -99999;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.65);
+}
+
+.w-block {
+  width: 200px;
+}
+
+.vh-75 {
+  height: 70vh;
+}
