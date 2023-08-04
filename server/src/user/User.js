@@ -1,5 +1,8 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config/database");
+const Token = require("../auth/Token");
+const Password = require("./Password");
+const OTP = require("./OTP");
 
 const Model = Sequelize.Model;
 
@@ -7,10 +10,7 @@ class User extends Model {}
 
 User.init(
   {
-    firstName: {
-      type: Sequelize.STRING,
-    },
-    lastName: {
+    username: {
       type: Sequelize.STRING,
     },
     email: {
@@ -19,11 +19,15 @@ User.init(
     password: {
       type: Sequelize.STRING,
     },
-    skill: {
-      type: Sequelize.STRING,
-    },
   },
-  { sequelize, modelName: "user" }
+  {
+    sequelize,
+    modelName: "user",
+  }
 );
+
+User.hasMany(Token, { onDelete: "cascade", foreignKey: "userId" });
+User.hasMany(Password, { onDelete: "cascade", foreignKey: "userId" });
+User.hasOne(OTP, { onDelete: "cascade", foreignKey: "userId" });
 
 module.exports = User;
